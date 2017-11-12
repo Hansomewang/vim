@@ -1,6 +1,43 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " HansomeWang vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+filetype plugin indent on        " 开启插件
+syntax on                        " 自动语法高亮
+set t_Co=256
+colorscheme zz256
+
+set backspace=indent,eol,start   " 不设定在插入状态无法用退格键和 Delete 键删除回车符
+set backupcopy=yes               " 设置备份时的行为为覆盖
+set cmdheight=1                  " 设定命令行的行数为 1
+set expandtab                    " 用空格替代tab
+set foldcolumn=0                 " 设置折叠区域的宽度
+set foldenable                   " 开启折叠
+set foldmethod=syntax            " 设置语法折叠
+set foldlevel=3                  " 设置折叠层数为
+set guioptions-=T                " 隐藏工具栏
+set guioptions-=m                " 隐藏菜单栏
+set helplang=cn                  " 设置帮助语言
+set hidden                       " 允许在有未保存的修改时切换缓冲区，此时的修改由 vim 负责保存
+set hlsearch                     " 搜索时高亮显示被找到的文本
+set ignorecase smartcase         " 搜索时忽略大小写，但在有一个或以上大写字母时仍保持对大小写敏感
+set incsearch                    " 输入搜索内容时就显示搜索结果
+set laststatus=2                 " 显示状态栏 (默认值为 1, 无法显示状态栏)
+set magic                        " 设置魔术
+set nocompatible                 " 关闭 vi 兼容模式
+set noerrorbells                 " 关闭错误信息响铃
+set nobackup                     " 关闭备份
+set novisualbell                 " 关闭使用可视响铃代替呼叫
+set nowb                                 " 不产生swp文件
+set nowrapscan                   " 禁止在搜索到文件两端时重新搜索
+set number                       " 显示行号
+set ruler                        " 打开状态栏标尺
+set shiftwidth=4                 " 设定 << 和 >> 命令移动时的宽度为 4
+set smartindent                  " 开启新行时使用智能自动缩进
+set softtabstop=4                " 使得按退格键时可以一次删掉 4 个空格
+set t_vb=                        " 置空错误铃声的终端代码
+set tabstop=4                    " 设定 tab 长度为 4
+set tags=./tags                  " 设定 ctag　文件名
+cs add ./cscope.out              " 设定 cscope 文件名
 
 
 
@@ -9,6 +46,15 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <F6> :cn<cr>
 nmap <F7> :cp<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" winmanager.vim
+" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:winManagerWindowLayout = "BufExplorer|TagList"
+let g:winManagerWidth = 30
+let g:defaultExplorer = 0
+map <F3> :WMToggle<CR>
+imap <F3> <ESC>:NERDTreeToggle<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -19,8 +65,6 @@ set nobackup
 set noswapfile
 " 文件在vim之外修改过，自动重新读入
 set autoread
-" 设置自动保存
-set autowrite
 " 在处理未保存或只读文件的时候，弹出确认
 set confirm
 
