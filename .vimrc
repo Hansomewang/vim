@@ -1,5 +1,5 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" HansomeWang vim
+" vimrc config
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 filetype plugin indent on        " 开启插件
 syntax on                        " 自动语法高亮
@@ -39,7 +39,28 @@ set tabstop=4                    " 设定 tab 长度为 4
 set tags=./tags                  " 设定 ctag　文件名
 cs add ./cscope.out              " 设定 cscope 文件名
 
+" 为C程序提供自动缩进
+set smartindent
 
+"自动补全
+:inoremap ( ()<ESC>i
+:inoremap ) <c-r>=ClosePair(')')<CR>
+:inoremap { {<CR>}<ESC>O
+:inoremap } <c-r>=ClosePair('}')<CR>
+:inoremap [ []<ESC>i
+:inoremap ] <c-r>=ClosePair(']')<CR>
+:inoremap " ""<ESC>i
+:inoremap ' ''<ESC>i
+function! ClosePair(char)
+    if getline('.')[col('.') - 1] == a:char
+        return "\<Right>"
+    else
+        return a:char
+    endif
+endfunction
+filetype plugin indent on 
+"打开文件类型检测, 加了这句才可以用智能补全
+set completeopt=longest,menu
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " quickfix
@@ -89,6 +110,23 @@ let g:winManagerWidth = 30
 let g:defaultExplorer = 0
 map <F3> :WMToggle<CR>
 imap <F3> <ESC>:NERDTreeToggle<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CTags的设定  
+ """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let Tlist_Sort_Type = "name"    " 按照名称排序  
+let Tlist_Use_Right_Window = 1  " 在右侧显示窗口  
+let Tlist_Compart_Format = 1    " 压缩方式  
+let Tlist_Exist_OnlyWindow = 1  " 如果只有一个buffer，kill窗口也kill掉buffer  
+let Tlist_File_Fold_Auto_Close = 0  " 不要关闭其他文件的tags  
+let Tlist_Enable_Fold_Column = 0    " 不要显示折叠树  
+autocmd FileType java set tags+=D:\tools\java\tags  
+"autocmd FileType h,cpp,cc,c set tags+=D:\tools\cpp\tags  
+"let Tlist_Show_One_File=1            "不同时显示多个文件的tag，只显示当前文件的
+"设置tags  
+set tags=tags  
+"set autochdir"
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "cscope
