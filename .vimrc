@@ -163,3 +163,10 @@ nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 " i: Find files #including this file
 nmap <C-\>i :cs find i <C-R>=expand("<cfile>")<CR><CR>
 
+
+"autocomplpop插件,一个字母即可补全  
+let g:acp_behaviorKeywordLength = 1  
+let g:AutoComplPop_MappingDriven = 1  
+""color  
+hi Pmenu guibg=#444444  
+hi PmenuSel ctermfg=7 ctermbg=4 guibg=#555555 guifg=#ffffff  ""
